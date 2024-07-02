@@ -1,0 +1,17 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: facturasinnovaservices
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password:
+    url: jdbc:mysql://localhost/innovafacturas?useSSL=false
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui-custom.html
