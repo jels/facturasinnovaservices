@@ -69,16 +69,7 @@ public class RolController {
                 return new ResponseEntity<>(
                                 MensajeResponse.builder()
                                                 .mensaje("Registro encontrado:")
-                                                .objeto(
-                                                                RolDto.builder()
-                                                                                .idRol(rol.getIdRol())
-                                                                                .nombreRol(rol.getNombreRol())
-                                                                                .statusRol(rol.getStatusRol())
-                                                                                .createdAt(rol.getCreatedAt())
-                                                                                .createdBy(rol.getCreatedBy())
-                                                                                .updatedAt(rol.getUpdatedAt())
-                                                                                .updatedBy(rol.getUpdatedBy())
-                                                                                .build())
+                                                .objeto(rol)
                                                 .build(),
                                 HttpStatus.OK);
 

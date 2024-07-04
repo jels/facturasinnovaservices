@@ -69,37 +69,7 @@ public class FacturaController {
                 return new ResponseEntity<>(
                                 MensajeResponse.builder()
                                                 .mensaje("Registro encontrado:")
-                                                .objeto(FacturaDto.builder()
-                                                                .idFactura(factura.getIdFactura())
-                                                                .tipoFactura(factura.getTipoFactura())
-                                                                .timbradoFactura(factura.getTimbradoFactura())
-                                                                .cdcFactura(factura.getCdcFactura())
-                                                                .codigoControlFactura(factura.getCodigoControlFactura())
-                                                                .numeroFactura(factura.getNumeroFactura())
-                                                                .rucEmisorFactura(factura.getRucEmisorFactura())
-                                                                .razonSocialEmisorFactura(
-                                                                                factura.getRazonSocialEmisorFactura())
-                                                                .rucReceptorFactura(factura.getRucReceptorFactura())
-                                                                .razonSocialReceptorFactura(
-                                                                                factura.getRazonSocialReceptorFactura())
-                                                                .condicionVentaFactura(
-                                                                                factura.getCondicionVentaFactura())
-                                                                .fechaInicioVigenciaFactura(
-                                                                                factura.getFechaInicioVigenciaFactura())
-                                                                .fechaFinVigenciaFactura(
-                                                                                factura.getFechaFinVigenciaFactura())
-                                                                .fechaEmisionFactura(factura.getFechaEmisionFactura())
-                                                                .montoTotalFactura(factura.getMontoTotalFactura())
-                                                                .montoTotalIvaFactura(factura.getMontoTotalIvaFactura())
-                                                                .monto5Factura(factura.getMonto5Factura())
-                                                                .monto10Factura(factura.getMonto10Factura())
-                                                                .excentaFactura(factura.getExcentaFactura())
-                                                                .statusFactura(factura.getStatusFactura())
-                                                                .createdBy(factura.getCreatedBy())
-                                                                .createdAt(factura.getCreatedAt())
-                                                                .updatedAt(factura.getUpdatedAt())
-                                                                .updatedBy(factura.getUpdatedBy())
-                                                                .build())
+                                                .objeto(factura)
                                                 .build(),
                                 HttpStatus.OK);
 

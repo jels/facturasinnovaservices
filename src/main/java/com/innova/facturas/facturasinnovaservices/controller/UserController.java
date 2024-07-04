@@ -69,18 +69,7 @@ public class UserController {
                 return new ResponseEntity<>(
                                 MensajeResponse.builder()
                                                 .mensaje("Registro encontrado:")
-                                                .objeto(UserDto.builder()
-                                                                .idUser(user.getIdUser())
-                                                                .rol(user.getRol())
-                                                                .username(user.getUsername())
-                                                                .password(user.getPassword())
-                                                                .lastLogin(user.getLastLogin())
-                                                                .createdAt(user.getCreatedAt())
-                                                                .updatedAt(user.getUpdatedAt())
-                                                                .persona(user.getPersona())
-                                                                .statusUser(user.getStatusUser())
-                                                                .createdBy(user.getCreatedBy())
-                                                                .build())
+                                                .objeto(user)
                                                 .build(),
                                 HttpStatus.OK);
 

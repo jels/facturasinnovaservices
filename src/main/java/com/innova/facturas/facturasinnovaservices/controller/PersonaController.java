@@ -69,23 +69,7 @@ public class PersonaController {
                 return new ResponseEntity<>(
                                 MensajeResponse.builder()
                                                 .mensaje("Registro encontrado:")
-                                                .objeto(
-                                                                PersonaDto.builder()
-                                                                                .idPersona(persona.getIdPersona())
-                                                                                .nombrePersona(persona
-                                                                                                .getNombrePersona())
-                                                                                .apellidoPersona(persona
-                                                                                                .getApellidoPersona())
-                                                                                .telefonoPersona(persona
-                                                                                                .getTelefonoPersona())
-                                                                                .ciPersona(persona.getCiPersona())
-                                                                                .statusPersona(persona
-                                                                                                .getStatusPersona())
-                                                                                .createdAt(persona.getCreatedAt())
-                                                                                .createdBy(persona.getCreatedBy())
-                                                                                .updatedAt(persona.getUpdatedAt())
-                                                                                .updatedBy(persona.getUpdatedBy())
-                                                                                .build())
+                                                .objeto(persona)
                                                 .build(),
                                 HttpStatus.OK);
 

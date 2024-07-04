@@ -51,7 +51,7 @@ public class Factura implements Serializable {
     @Column(name = "numero_factura")
     private String numeroFactura;
 
-    @Column(name = "ruc_emiso_factura")
+    @Column(name = "ruc_emisor_factura")
     private String rucEmisorFactura;
 
     @Column(name = "razon_social_emisor_factura")
