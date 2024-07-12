@@ -11,32 +11,62 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
+@Setter
+@Getter
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @ToString
 @Builder
-@Table(name = "rol")
-public class Rol implements Serializable {
+@Table(name = "cliente")
+public class Cliente implements Serializable {
 
     @Id
-    @Column(name = "id_rol")
+    @Column(name = "id_cliente")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idRol;
+    private Integer idCliente;
 
-    @Column(name = "nombre_rol")
-    private String nombreRol;
+    @ManyToOne // (fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_empresa", nullable = false)
+    private Empresa empresa;
 
-    @Column(name = "status_rol")
-    private String statusRol;
+    private String ruc;
+
+    @Column(name = "nombre_cliente")
+    private String nombreCliente;
+
+    @Column(name = "ruc_cliente")
+    private String rucCliente;
+
+    @Column(name = "dv_ruc_cliente")
+    private String dvRucCliente;
+
+    @Column(name = "direccion_cliente")
+    private String direccionCliente;
+
+    @Column(name = "telefono_cliente")
+    private String telefonoCliente;
+
+    @Column(name = "email_cliente")
+    private String correoCliente;
+
+    @Column(name = "status_cliente")
+    private String estadoCliente;
+
+    @Column(name = "fecha_cierre_cliente")
+    private Integer fechaCierreCliente;
 
     @Column(name = "created_at")
     @CreationTimestamp

@@ -24,41 +24,35 @@ import lombok.ToString;
 @Entity
 @ToString
 @Builder
-@Table(name = "persona")
-public class Persona implements Serializable {
+@Table(name = "historialinformes")
+public class Historialinformes implements Serializable {
 
     @Id
-    @Column(name = "id_persona")
+    @Column(name = "id_historial")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idPersona;
+    private Integer idHistorial;
 
-    @Column(name = "nombre_persona")
-    private String nombrePersona;
+    @Column(name = "status_historial")
+    private String statusHistorial;
 
-    @Column(name = "apellido_persona")
-    private String apellidoPersona;
-
-    @Column(name = "telefono_persona")
-    private String telefonoPersona;
-
-    @Column(name = "ci_persona")
-    private String ciPersona;
-
-    @Column(name = "status_persona")
-    private String statusPersona;
-
-    @Column(name = "created_by")
-    private Integer createdBy;
+    @Column(name = "id_user")
+    private User user;
 
     @Column(name = "created_at")
     @CreationTimestamp
     private Timestamp createdAt;
 
-    @Column(name = "updated_by")
-    private Integer updatedBy;
-
     @Column(name = "updated_at")
     @UpdateTimestamp
     private Timestamp updatedAt;
+
+    @Column(name = "datos")
+    private String datos;
+
+    @Column(name = "periodo")
+    private String periodo;
+
+    @Column(name = "cliente")
+    private String cliente;
 
 }

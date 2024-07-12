@@ -24,41 +24,44 @@ import lombok.ToString;
 @Entity
 @ToString
 @Builder
-@Table(name = "persona")
-public class Persona implements Serializable {
+@Table(name = "empresa")
+public class Empresa implements Serializable {
 
     @Id
-    @Column(name = "id_persona")
+    @Column(name = "id_empresa")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idPersona;
+    private Integer idEmpresa;
 
-    @Column(name = "nombre_persona")
-    private String nombrePersona;
+    @Column(name = "nombre_empresa")
+    private String nombreEmpresa;
 
-    @Column(name = "apellido_persona")
-    private String apellidoPersona;
+    @Column(name = "ruc_empresa")
+    private String rucEmpresa;
 
-    @Column(name = "telefono_persona")
-    private String telefonoPersona;
+    @Column(name = "direccion_empresa")
+    private String direccionEmpresa;
 
-    @Column(name = "ci_persona")
-    private String ciPersona;
+    @Column(name = "telefono_empresa")
+    private String telefonoEmpresa;
 
-    @Column(name = "status_persona")
-    private String statusPersona;
+    @Column(name = "correo_empresa")
+    private String correoEmpresa;
 
-    @Column(name = "created_by")
-    private Integer createdBy;
+    @Column(name = "status_empresa")
+    private String statusEmpresa;
 
     @Column(name = "created_at")
     @CreationTimestamp
     private Timestamp createdAt;
 
-    @Column(name = "updated_by")
-    private Integer updatedBy;
-
     @Column(name = "updated_at")
     @UpdateTimestamp
     private Timestamp updatedAt;
+
+    @Column(name = "created_by")
+    private Integer createdBy;
+
+    @Column(name = "updated_by")
+    private Integer updatedBy;
 
 }

@@ -2,14 +2,12 @@ package com.innova.facturas.facturasinnovaservices.model.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.sql.Timestamp;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -35,6 +33,10 @@ public class Factura implements Serializable {
     @Column(name = "id_factura")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idFactura;
+
+    @ManyToOne
+    @JoinColumn(name = "id_empresa", nullable = false)
+    private Empresa empresa;
 
     @Column(name = "tipo_factura")
     private String tipoFactura;
@@ -94,21 +96,19 @@ public class Factura implements Serializable {
     private String statusFactura;
 
     @Column(name = "created_at")
-    private Timestamp createdAt;
+    @CreationTimestamp // with this annotation, hibernate will automatically manage the timestamps
+    private Date createdAt;
 
-    @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "created_by")
+    @ManyToOne
+    @JoinColumn(name = "created_by", nullable = false)
     private User createdBy;
 
     @Column(name = "updated_at")
-    private Timestamp updatedAt;
+    @UpdateTimestamp // with this annotation, hibernate will automatically manage the timestamps
+    private Date updatedAt;
 
-    @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "updated_by")
+    @ManyToOne
+    @JoinColumn(name = "updated_by", nullable = false)
     private User updatedBy;
 
 }

@@ -1,14 +1,14 @@
 package com.innova.facturas.facturasinnovaservices.model.entity;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.sql.Timestamp;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,9 +18,13 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
+@Setter
+@Getter
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -35,10 +39,11 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUser;
 
-    @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-    // @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_rol")
+    @Column(name = "id_empresa")
+    private Integer idEmpresa;
+
+    @ManyToOne // (fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_rol", nullable = false)
     private Rol rol;
 
     @Column(name = "username")
@@ -48,27 +53,24 @@ public class User implements Serializable {
     private String password;
 
     @Column(name = "last_login")
-    private Timestamp lastLogin;
+    private Date lastLogin;
 
     @Column(name = "created_at")
+    @CreationTimestamp // with this annotation, hibernate will automatically manage the timestamps
     private Timestamp createdAt;
 
     @Column(name = "updated_at")
+    @UpdateTimestamp // with this annotation, hibernate will automatically manage the timestamps
     private Timestamp updatedAt;
 
-    @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-    // @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_persona")
+    @ManyToOne // (fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_persona", nullable = false)
     private Persona persona;
 
     @Column(name = "status_user")
     private String statusUser;
 
-    @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "created_by")
-    private User createdBy;
+    @Column(name = "created_by")
+    private Integer createdBy;
 
 }

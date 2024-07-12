@@ -2,10 +2,11 @@ package com.innova.facturas.facturasinnovaservices.model.dto;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.sql.Timestamp;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import com.innova.facturas.facturasinnovaservices.model.entity.Empresa;
 import com.innova.facturas.facturasinnovaservices.model.entity.User;
 
 import lombok.AllArgsConstructor;
@@ -20,6 +21,7 @@ import lombok.ToString;
 public class FacturaDto implements Serializable {
 
     private Integer idFactura;
+    private Empresa empresa;
     private String tipoFactura;
     private String timbradoFactura;
     private String cdcFactura;
@@ -39,13 +41,11 @@ public class FacturaDto implements Serializable {
     private Double monto10Factura;
     private Double excentaFactura;
     private String statusFactura;
-    private Timestamp createdAt;
-    @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-    @JsonIgnore
+    @CreationTimestamp
+    private Date createdAt;
     private User createdBy;
-    private Timestamp updatedAt;
-    @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-    @JsonIgnore
+    @UpdateTimestamp
+    private Date updatedAt;
     private User updatedBy;
 
 }

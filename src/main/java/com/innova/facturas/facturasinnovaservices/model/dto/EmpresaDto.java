@@ -15,19 +15,20 @@ import lombok.ToString;
 @ToString
 @Builder
 @AllArgsConstructor
-public class PersonaDto implements Serializable {
+public class EmpresaDto implements Serializable {
 
-    private Integer idPersona;
-    private String nombrePersona;
-    private String apellidoPersona;
-    private String telefonoPersona;
-    private String ciPersona;
-    private String statusPersona;
-    private Integer createdBy;
+    private Integer idEmpresa;
+    private String nombreEmpresa;
+    private String rucEmpresa;
+    private String direccionEmpresa;
+    private String telefonoEmpresa;
+    private String correoEmpresa;
+    private String statusEmpresa;
     @CreationTimestamp
     private Timestamp createdAt;
-    private Integer updatedBy;
     @UpdateTimestamp
     private Timestamp updatedAt;
+    private Integer createdBy;
+    private Integer updatedBy;
 
 }

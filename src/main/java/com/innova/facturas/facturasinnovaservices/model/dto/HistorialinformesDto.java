@@ -6,6 +6,8 @@ import java.sql.Timestamp;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.innova.facturas.facturasinnovaservices.model.entity.User;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,19 +17,16 @@ import lombok.ToString;
 @ToString
 @Builder
 @AllArgsConstructor
-public class PersonaDto implements Serializable {
+public class HistorialinformesDto implements Serializable {
 
-    private Integer idPersona;
-    private String nombrePersona;
-    private String apellidoPersona;
-    private String telefonoPersona;
-    private String ciPersona;
-    private String statusPersona;
-    private Integer createdBy;
+    private Integer idHistorial;
+    private String statusHistorial;
+    private User user;
     @CreationTimestamp
     private Timestamp createdAt;
-    private Integer updatedBy;
     @UpdateTimestamp
     private Timestamp updatedAt;
-
+    private String datos;
+    private String periodo;
+    private String cliente;
 }

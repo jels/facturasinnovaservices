@@ -29,6 +29,7 @@ public class UserServiceImpl implements UserService {
 
         User user = User.builder()
                 .idUser(userDto.getIdUser())
+                .idEmpresa(userDto.getIdEmpresa())
                 .rol(userDto.getRol())
                 .username(userDto.getUsername())
                 .password(userDto.getPassword())

@@ -8,6 +8,7 @@ public class FacturaMapper {
     public static FacturaDto mapToFacturaDto(Factura factura) {
         return new FacturaDto(
                 factura.getIdFactura(),
+                factura.getEmpresa(),
                 factura.getTipoFactura(),
                 factura.getTimbradoFactura(),
                 factura.getCdcFactura(),
@@ -36,6 +37,7 @@ public class FacturaMapper {
     public static Factura mapToFactura(FacturaDto facturaDto) {
         return new Factura(
                 facturaDto.getIdFactura(),
+                facturaDto.getEmpresa(),
                 facturaDto.getTipoFactura(),
                 facturaDto.getTimbradoFactura(),
                 facturaDto.getCdcFactura(),

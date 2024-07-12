@@ -29,6 +29,7 @@ public class FacturaServiceImpl implements FacturaService {
 
         Factura factura = Factura.builder()
                 .idFactura(facturaDto.getIdFactura())
+                .empresa(facturaDto.getEmpresa())
                 .tipoFactura(facturaDto.getTipoFactura())
                 .timbradoFactura(facturaDto.getTimbradoFactura())
                 .cdcFactura(facturaDto.getCdcFactura())

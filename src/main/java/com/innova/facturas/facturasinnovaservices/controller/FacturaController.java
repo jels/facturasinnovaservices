@@ -82,11 +82,13 @@ public class FacturaController {
                         facturaSave = facturaService.save(facturaDto);
                         return new ResponseEntity<>(
                                         MensajeResponse.builder()
-                                                        .mensaje("Usuario creado")
+                                                        .mensaje("Exito")
                                                         .objeto(
                                                                         FacturaDto.builder()
                                                                                         .idFactura(facturaSave
                                                                                                         .getIdFactura())
+                                                                                        .empresa(facturaSave
+                                                                                                        .getEmpresa())
                                                                                         .tipoFactura(facturaSave
                                                                                                         .getTipoFactura())
                                                                                         .timbradoFactura(facturaSave
@@ -139,7 +141,7 @@ public class FacturaController {
                 } catch (Exception e) {
                         return new ResponseEntity<>(
                                         MensajeResponse.builder()
-                                                        .mensaje("Error al crear Factura")
+                                                        .mensaje("Error")
                                                         .objeto(null)
                                                         .build(),
                                         HttpStatus.METHOD_NOT_ALLOWED);
@@ -155,9 +157,11 @@ public class FacturaController {
                                 facturaDto.setIdFactura(id);
                                 facturaUpdate = facturaService.save(facturaDto);
                                 return new ResponseEntity<>(MensajeResponse.builder()
-                                                .mensaje("Guardado correctamente")
+                                                .mensaje("ACTUALIZADO")
                                                 .objeto(FacturaDto.builder()
                                                                 .idFactura(facturaUpdate.getIdFactura())
+                                                                .empresa(facturaUpdate
+                                                                                .getEmpresa())
                                                                 .tipoFactura(facturaUpdate.getTipoFactura())
                                                                 .timbradoFactura(facturaUpdate.getTimbradoFactura())
                                                                 .cdcFactura(facturaUpdate.getCdcFactura())

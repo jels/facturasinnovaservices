@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,32 +23,31 @@ import lombok.ToString;
 @Entity
 @ToString
 @Builder
-@Table(name = "rol")
-public class Rol implements Serializable {
+@Table(name = "auditoria")
+public class Auditoria implements Serializable {
 
     @Id
-    @Column(name = "id_rol")
+    @Column(name = "id_auditoria")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idRol;
+    private Integer idAuditoria;
 
-    @Column(name = "nombre_rol")
-    private String nombreRol;
+    @Column(name = "tabla_afectada")
+    private String tablaAfectada;
 
-    @Column(name = "status_rol")
-    private String statusRol;
-
-    @Column(name = "created_at")
+    @Column(name = "fecha_creacion")
     @CreationTimestamp
-    private Timestamp createdAt;
+    private Timestamp fechaCreacion;
 
-    @Column(name = "created_by")
-    private Integer createdBy;
+    @Column(name = "creado_por")
+    private String creadoPor;
 
-    @Column(name = "updated_at")
-    @UpdateTimestamp
-    private Timestamp updatedAt;
+    @Column(name = "accion")
+    private String accion;
 
-    @Column(name = "updated_by")
-    private Integer updatedBy;
+    @Column(name = "accion_detalle")
+    private String accionDetalle;
+
+    @Column(name = "detalle")
+    private String detalle;
 
 }

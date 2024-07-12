@@ -1,13 +1,14 @@
 package com.innova.facturas.facturasinnovaservices.model.dto;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.sql.Timestamp;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import com.innova.facturas.facturasinnovaservices.model.entity.Persona;
 import com.innova.facturas.facturasinnovaservices.model.entity.Rol;
-import com.innova.facturas.facturasinnovaservices.model.entity.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,25 +22,17 @@ import lombok.ToString;
 public class UserDto implements Serializable {
 
     private Integer idUser;
-
-    @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-    @JsonIgnore
+    private Integer idEmpresa;
     private Rol rol;
-
     private String username;
     private String password;
-    private Timestamp lastLogin;
+    private Date lastLogin;
+    @CreationTimestamp
     private Timestamp createdAt;
+    @UpdateTimestamp
     private Timestamp updatedAt;
-
-    @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-    @JsonIgnore
     private Persona persona;
-
     private String statusUser;
-
-    @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-    @JsonIgnore
-    private User createdBy;
+    private Integer createdBy;
 
 }

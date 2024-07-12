@@ -86,6 +86,7 @@ public class UserController {
                                                         .mensaje("Usuario creado")
                                                         .objeto(UserDto.builder()
                                                                         .idUser(userSave.getIdUser())
+                                                                        .idEmpresa(userSave.getIdEmpresa())
                                                                         .rol(userSave.getRol())
                                                                         .username(userSave
                                                                                         .getUsername())
@@ -128,6 +129,7 @@ public class UserController {
                                                 .mensaje("Guardado correctamente")
                                                 .objeto(UserDto.builder()
                                                                 .idUser(userUpdate.getIdUser())
+                                                                .idEmpresa(userUpdate.getIdEmpresa())
                                                                 .rol(userUpdate.getRol())
                                                                 .username(userUpdate.getUsername())
                                                                 .password(userUpdate.getPassword())

@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,16 +14,15 @@ import lombok.ToString;
 @ToString
 @Builder
 @AllArgsConstructor
-public class RolDto implements Serializable {
+public class AuditoriaDto implements Serializable {
 
-    private Integer idRol;
-    private String nombreRol;
-    private String statusRol;
+    private Integer idAuditoria;
+    private String tablaAfectada;
     @CreationTimestamp
-    private Timestamp createdAt;
-    private Integer createdBy;
-    @UpdateTimestamp
-    private Timestamp updatedAt;
-    private Integer updatedBy;
+    private Timestamp fechaCreacion;
+    private String creadoPor;
+    private String accion;
+    private String accionDetalle;
+    private String detalle;
 
 }
