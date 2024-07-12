@@ -26,157 +26,163 @@ import com.innova.facturas.facturasinnovaservices.services.ClienteService;
 @CrossOrigin(origins = "*")
 public class ClienteController {
 
-    @Autowired
-    private ClienteService clienteService;
+        @Autowired
+        private ClienteService clienteService;
 
-    @GetMapping("clientes")
-    public ResponseEntity<?> showAll() {
+        @GetMapping("clientes")
+        public ResponseEntity<?> showAll() {
 
-        List<Cliente> clientes = clienteService.getAllClientes();
+                List<Cliente> clientes = clienteService.getAllClientes();
 
-        if (clientes == null) {
-            return new ResponseEntity<>(
-                    MensajeResponse.builder()
-                            .mensaje("No hay registros")
-                            .objeto(clientes)
-                            .build(),
-                    HttpStatus.NOT_FOUND);
-        }
+                if (clientes == null) {
+                        return new ResponseEntity<>(
+                                        MensajeResponse.builder()
+                                                        .mensaje("No hay registros")
+                                                        .objeto(clientes)
+                                                        .build(),
+                                        HttpStatus.NOT_FOUND);
+                }
 
-        return new ResponseEntity<>(
-                MensajeResponse.builder()
-                        .mensaje("Registros Obtenidos:")
-                        .objeto(clientes)
-                        .build(),
-                HttpStatus.OK);
-    }
-
-    @GetMapping("cliente/{id}")
-    public ResponseEntity<?> showById(@PathVariable Integer id) {
-
-        Cliente cliente = clienteService.findById(id);
-
-        if (cliente == null) {
-            return new ResponseEntity<>(
-                    MensajeResponse.builder()
-                            .mensaje("No hay registros")
-                            .objeto(cliente)
-                            .build(),
-                    HttpStatus.NOT_FOUND);
-
-        }
-
-        return new ResponseEntity<>(
-                MensajeResponse.builder()
-                        .mensaje("Registro encontrado:")
-                        .objeto(cliente)
-                        .build(),
-                HttpStatus.OK);
-
-    }
-
-    @PostMapping("cliente")
-    public ResponseEntity<?> create(@RequestBody ClienteDto clienteDto) {
-        Cliente clienteSave = null;
-
-        try {
-            clienteSave = clienteService.save(clienteDto);
-            return new ResponseEntity<>(
-                    MensajeResponse.builder()
-                            .mensaje("Cliente creado")
-                            .objeto(ClienteDto.builder()
-                                    .idCliente(clienteSave.getIdCliente())
-                                    .empresa(clienteSave.getEmpresa())
-                                    .nombreCliente(clienteSave.getNombreCliente())
-                                    .rucCliente(clienteSave.getRucCliente())
-                                    .dvRucCliente(clienteSave.getDvRucCliente())
-                                    .direccionCliente(clienteSave.getDireccionCliente())
-                                    .telefonoCliente(clienteSave.getTelefonoCliente())
-                                    .correoCliente(clienteSave.getCorreoCliente())
-                                    .estadoCliente(clienteSave.getEstadoCliente())
-                                    .fechaCierreCliente(clienteSave.getFechaCierreCliente())
-                                    .createdAt(clienteSave.getCreatedAt())
-                                    .createdBy(clienteSave.getCreatedBy())
-                                    .updatedAt(clienteSave.getUpdatedAt())
-                                    .updatedBy(clienteSave.getUpdatedBy())
-                                    .build())
-                            .build(),
-                    HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(
-                    MensajeResponse.builder()
-                            .mensaje("Error al crear usuario")
-                            .objeto(null)
-                            .build(),
-                    HttpStatus.METHOD_NOT_ALLOWED);
-        }
-    }
-
-    @PutMapping("cliente/{id}")
-    public ResponseEntity<?> update(@RequestBody ClienteDto clienteDto, @PathVariable Integer id) {
-
-        Cliente clienteUpdate = null;
-        try {
-            if (clienteService.existsById(id)) {
-                clienteDto.setIdCliente(id);
-                clienteUpdate = clienteService.save(clienteDto);
-                return new ResponseEntity<>(MensajeResponse.builder()
-                        .mensaje("Guardado correctamente")
-                        .objeto(ClienteDto.builder()
-                                .idCliente(clienteUpdate.getIdCliente())
-                                .empresa(clienteUpdate.getEmpresa())
-                                .nombreCliente(clienteUpdate.getNombreCliente())
-                                .rucCliente(clienteUpdate.getRucCliente())
-                                .dvRucCliente(clienteUpdate.getDvRucCliente())
-                                .direccionCliente(clienteUpdate.getDireccionCliente())
-                                .telefonoCliente(clienteUpdate.getTelefonoCliente())
-                                .correoCliente(clienteUpdate.getCorreoCliente())
-                                .estadoCliente(clienteUpdate.getEstadoCliente())
-                                .fechaCierreCliente(clienteUpdate.getFechaCierreCliente())
-                                .createdAt(clienteUpdate.getCreatedAt())
-                                .createdBy(clienteUpdate.getCreatedBy())
-                                .updatedAt(clienteUpdate.getUpdatedAt())
-                                .updatedBy(clienteUpdate.getUpdatedBy())
-                                .build())
-                        .build(), HttpStatus.CREATED);
-            } else {
                 return new ResponseEntity<>(
-                        MensajeResponse.builder()
-                                .mensaje("El registro que intenta actualizar no se encuentra en la base de datos.")
-                                .objeto(null)
-                                .build(),
-                        HttpStatus.NOT_FOUND);
-            }
-        } catch (DataAccessException exDt) {
-            return new ResponseEntity<>(
-                    MensajeResponse.builder()
-                            .mensaje(exDt.getMessage())
-                            .objeto(null)
-                            .build(),
-                    HttpStatus.METHOD_NOT_ALLOWED);
+                                MensajeResponse.builder()
+                                                .mensaje("Registros Obtenidos:")
+                                                .objeto(clientes)
+                                                .build(),
+                                HttpStatus.OK);
         }
-    }
 
-    @DeleteMapping("cliente/{id}")
-    public ResponseEntity<?> delete(@PathVariable Integer id) {
+        @GetMapping("cliente/{id}")
+        public ResponseEntity<?> showById(@PathVariable Integer id) {
 
-        try {
-            Cliente clienteDelete = clienteService.findById(id);
-            if (clienteDelete == null) {
-                return new ResponseEntity<>(clienteDelete, HttpStatus.NOT_FOUND);
-            } else {
-                clienteService.delete(clienteDelete);
-                return new ResponseEntity<>(clienteDelete, HttpStatus.NO_CONTENT);
-            }
+                Cliente cliente = clienteService.findById(id);
 
-        } catch (DataAccessException exDt) {
-            return new ResponseEntity<>(
-                    MensajeResponse.builder()
-                            .mensaje(exDt.getMessage())
-                            .objeto(null)
-                            .build(),
-                    HttpStatus.METHOD_NOT_ALLOWED);
+                if (cliente == null) {
+                        return new ResponseEntity<>(
+                                        MensajeResponse.builder()
+                                                        .mensaje("No hay registros")
+                                                        .objeto(cliente)
+                                                        .build(),
+                                        HttpStatus.NOT_FOUND);
+
+                }
+
+                return new ResponseEntity<>(
+                                MensajeResponse.builder()
+                                                .mensaje("Registro encontrado:")
+                                                .objeto(cliente)
+                                                .build(),
+                                HttpStatus.OK);
+
         }
-    }
+
+        @PostMapping("cliente")
+        public ResponseEntity<?> create(@RequestBody ClienteDto clienteDto) {
+                Cliente clienteSave = null;
+
+                try {
+                        clienteSave = clienteService.save(clienteDto);
+                        return new ResponseEntity<>(
+                                        MensajeResponse.builder()
+                                                        .mensaje("CREADO")
+                                                        .objeto(ClienteDto.builder()
+                                                                        .idCliente(clienteSave.getIdCliente())
+                                                                        .empresa(clienteSave.getEmpresa())
+                                                                        .nombreCliente(clienteSave.getNombreCliente())
+                                                                        .ruc(clienteSave.getRuc())
+                                                                        .rucCliente(clienteSave.getRucCliente())
+                                                                        .dvRucCliente(clienteSave.getDvRucCliente())
+                                                                        .direccionCliente(clienteSave
+                                                                                        .getDireccionCliente())
+                                                                        .telefonoCliente(clienteSave
+                                                                                        .getTelefonoCliente())
+                                                                        .correoCliente(clienteSave.getCorreoCliente())
+                                                                        .estadoCliente(clienteSave.getEstadoCliente())
+                                                                        .fechaCierreCliente(clienteSave
+                                                                                        .getFechaCierreCliente())
+                                                                        .createdAt(clienteSave.getCreatedAt())
+                                                                        .createdBy(clienteSave.getCreatedBy())
+                                                                        .updatedAt(clienteSave.getUpdatedAt())
+                                                                        .updatedBy(clienteSave.getUpdatedBy())
+                                                                        .build())
+                                                        .build(),
+                                        HttpStatus.CREATED);
+                } catch (Exception e) {
+                        return new ResponseEntity<>(
+                                        MensajeResponse.builder()
+                                                        .mensaje("Error al crear cliente")
+                                                        .objeto(null)
+                                                        .build(),
+                                        HttpStatus.METHOD_NOT_ALLOWED);
+                }
+        }
+
+        @PutMapping("cliente/{id}")
+        public ResponseEntity<?> update(@RequestBody ClienteDto clienteDto, @PathVariable Integer id) {
+
+                Cliente clienteUpdate = null;
+                try {
+                        if (clienteService.existsById(id)) {
+                                clienteDto.setIdCliente(id);
+                                clienteUpdate = clienteService.save(clienteDto);
+                                return new ResponseEntity<>(MensajeResponse.builder()
+                                                .mensaje("ACTUALIZADO")
+                                                .objeto(ClienteDto.builder()
+                                                                .idCliente(clienteUpdate.getIdCliente())
+                                                                .empresa(clienteUpdate.getEmpresa())
+                                                                .ruc(clienteUpdate.getRuc())
+                                                                .nombreCliente(clienteUpdate.getNombreCliente())
+                                                                .rucCliente(clienteUpdate.getRucCliente())
+                                                                .dvRucCliente(clienteUpdate.getDvRucCliente())
+                                                                .direccionCliente(clienteUpdate.getDireccionCliente())
+                                                                .telefonoCliente(clienteUpdate.getTelefonoCliente())
+                                                                .correoCliente(clienteUpdate.getCorreoCliente())
+                                                                .estadoCliente(clienteUpdate.getEstadoCliente())
+                                                                .fechaCierreCliente(
+                                                                                clienteUpdate.getFechaCierreCliente())
+                                                                .createdAt(clienteUpdate.getCreatedAt())
+                                                                .createdBy(clienteUpdate.getCreatedBy())
+                                                                .updatedAt(clienteUpdate.getUpdatedAt())
+                                                                .updatedBy(clienteUpdate.getUpdatedBy())
+                                                                .build())
+                                                .build(), HttpStatus.CREATED);
+                        } else {
+                                return new ResponseEntity<>(
+                                                MensajeResponse.builder()
+                                                                .mensaje("El registro que intenta actualizar no se encuentra en la base de datos.")
+                                                                .objeto(null)
+                                                                .build(),
+                                                HttpStatus.NOT_FOUND);
+                        }
+                } catch (DataAccessException exDt) {
+                        return new ResponseEntity<>(
+                                        MensajeResponse.builder()
+                                                        .mensaje(exDt.getMessage())
+                                                        .objeto(null)
+                                                        .build(),
+                                        HttpStatus.METHOD_NOT_ALLOWED);
+                }
+        }
+
+        @DeleteMapping("cliente/{id}")
+        public ResponseEntity<?> delete(@PathVariable Integer id) {
+
+                try {
+                        Cliente clienteDelete = clienteService.findById(id);
+                        if (clienteDelete == null) {
+                                return new ResponseEntity<>(clienteDelete, HttpStatus.NOT_FOUND);
+                        } else {
+                                clienteService.delete(clienteDelete);
+                                return new ResponseEntity<>(clienteDelete, HttpStatus.NO_CONTENT);
+                        }
+
+                } catch (DataAccessException exDt) {
+                        return new ResponseEntity<>(
+                                        MensajeResponse.builder()
+                                                        .mensaje(exDt.getMessage())
+                                                        .objeto(null)
+                                                        .build(),
+                                        HttpStatus.METHOD_NOT_ALLOWED);
+                }
+        }
 
 }

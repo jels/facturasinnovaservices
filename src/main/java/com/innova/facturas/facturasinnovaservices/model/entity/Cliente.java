@@ -42,6 +42,7 @@ public class Cliente implements Serializable {
     @JoinColumn(name = "id_empresa", nullable = false)
     private Empresa empresa;
 
+    @Column(name = "ruc")
     private String ruc;
 
     @Column(name = "nombre_cliente")

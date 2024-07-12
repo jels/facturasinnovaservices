@@ -7,7 +7,7 @@ import com.innova.facturas.facturasinnovaservices.model.entity.Cliente;
 
 public interface ClienteService {
 
-    Cliente save(ClienteDto cliente);
+    Cliente save(ClienteDto clienteDto);
 
     Cliente findById(Integer id);
 

@@ -7,7 +7,7 @@ import com.innova.facturas.facturasinnovaservices.model.entity.User;
 
 public interface UserService {
 
-    User save(UserDto user);
+    User save(UserDto userDto);
 
     User findById(Integer id);
 

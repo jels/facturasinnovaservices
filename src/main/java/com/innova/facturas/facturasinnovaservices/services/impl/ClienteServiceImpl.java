@@ -29,6 +29,7 @@ public class ClienteServiceImpl implements ClienteService {
         Cliente cliente = Cliente.builder()
                 .idCliente(clienteDto.getIdCliente())
                 .empresa(clienteDto.getEmpresa())
+                .ruc(clienteDto.getRuc())
                 .nombreCliente(clienteDto.getNombreCliente())
                 .rucCliente(clienteDto.getRucCliente())
                 .dvRucCliente(clienteDto.getDvRucCliente())
