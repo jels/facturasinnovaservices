@@ -26,57 +26,39 @@ import lombok.ToString;
 @Entity
 @ToString
 @Builder
-@Table(name = "cliente")
-public class Cliente implements Serializable {
+@Table(name = "cotizacion")
+public class Cotizacion implements Serializable {
 
     @Id
-    @Column(name = "id_cliente")
+    @Column(name = "id_cotizacion")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idCliente;
+    private Integer idCotizacion;
 
     @ManyToOne // (fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_empresa", nullable = false)
-    private Empresa empresa;
+    @JoinColumn(name = "id_ajuste", nullable = false)
+    private Ajuste ajuste;
 
-    @Column(name = "ruc")
-    private String ruc;
+    @Column(name = "compra")
+    private Double compra;
 
-    @Column(name = "nombre_cliente")
-    private String nombreCliente;
+    @Column(name = "venta")
+    private Double venta;
 
-    @Column(name = "ruc_cliente")
-    private String rucCliente;
+    @Column(name = "status")
+    private String status;
 
-    @Column(name = "dv_ruc_cliente")
-    private String dvRucCliente;
-
-    @Column(name = "direccion_cliente")
-    private String direccionCliente;
-
-    @Column(name = "telefono_cliente")
-    private String telefonoCliente;
-
-    @Column(name = "email_cliente")
-    private String correoCliente;
-
-    @Column(name = "status_cliente")
-    private String estadoCliente;
-
-    @Column(name = "fecha_cierre_cliente")
-    private Integer fechaCierreCliente;
+    @Column(name = "created_by")
+    private Integer createdBy;
 
     @Column(name = "created_at")
     @CreationTimestamp
     private Timestamp createdAt;
 
-    @Column(name = "created_by")
-    private Integer createdBy;
+    @Column(name = "updated_by")
+    private Integer updatedBy;
 
     @Column(name = "updated_at")
     @UpdateTimestamp
     private Timestamp updatedAt;
-
-    @Column(name = "updated_by")
-    private Integer updatedBy;
 
 }
