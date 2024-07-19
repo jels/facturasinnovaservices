@@ -37,6 +37,12 @@ public class Rgfactura implements Serializable {
     @JoinColumn(name = "id_empresa", nullable = false)
     private Empresa empresa;
 
+    @Column(name = "ruc_receptor")
+    private String ruc;
+
+    @Column(name = "razon_social_receptor")
+    private String razonSocial;
+
     @Column(name = "mes_periodo")
     private String mesPeriodo;
 

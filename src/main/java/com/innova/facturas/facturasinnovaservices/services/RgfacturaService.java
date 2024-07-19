@@ -15,6 +15,12 @@ public interface RgfacturaService {
 
     List<Rgfactura> getAllRgfacturas();
 
+    List<Rgfactura> findAllOrderASC();
+
+    List<Rgfactura> findAllByRuc(Integer ruc);
+
+    List<Rgfactura> listRg90();
+
     boolean existsById(Integer id);
 
 }

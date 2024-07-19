@@ -20,6 +20,8 @@ public class RgfacturaDto implements Serializable {
 
     private Integer idRgFactura;
     private Empresa empresa;
+    private String ruc;
+    private String razonSocial;
     private String mesPeriodo;
     private String anhoPeriodo;
     private String codigoTipoRegistro;

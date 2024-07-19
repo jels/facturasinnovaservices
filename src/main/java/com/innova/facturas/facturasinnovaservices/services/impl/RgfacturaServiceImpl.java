@@ -23,6 +23,24 @@ public class RgfacturaServiceImpl implements RgfacturaService {
         return (List) rgfacturaDao.findAll();
     }
 
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @Override
+    public List<Rgfactura> findAllOrderASC() {
+        return (List) rgfacturaDao.findAllOrderASC();
+    }
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @Override
+    public List<Rgfactura> findAllByRuc(Integer ruc) {
+        return (List) rgfacturaDao.findAllByRuc(ruc);
+    }
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @Override
+    public List<Rgfactura> listRg90() {
+        return (List) rgfacturaDao.listRg90();
+    }
+
     @Transactional
     @Override
     public Rgfactura save(RgfacturaDto rgfacturaDto) {
@@ -30,6 +48,8 @@ public class RgfacturaServiceImpl implements RgfacturaService {
         Rgfactura rgfactura = Rgfactura.builder()
                 .idRgFactura(rgfacturaDto.getIdRgFactura())
                 .empresa(rgfacturaDto.getEmpresa())
+                .ruc(rgfacturaDto.getRuc())
+                .razonSocial(rgfacturaDto.getRazonSocial())
                 .mesPeriodo(rgfacturaDto.getMesPeriodo())
                 .anhoPeriodo(rgfacturaDto.getAnhoPeriodo())
                 .codigoTipoRegistro(rgfacturaDto.getCodigoTipoRegistro())
